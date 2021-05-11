@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "Costumer") // Optional
+@Table(name = "Customer") // Optional
 @NamedQueries({
-        @NamedQuery(name = "Costumer.findByEmail",
-                query = "SELECT a FROM Costumer a WHERE a.email = :email")
+        @NamedQuery(name = "Customer.findByEmail",
+                query = "SELECT a FROM Customer a WHERE a.email = :email")
 })
-public class Costumer {
+public class Customer {
 
     @Id
     @GeneratedValue
@@ -29,21 +29,21 @@ public class Costumer {
     @Column(name = "age")
     private Integer age;
 
-    //@OneToMany(mappedBy = "costumer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    //private List<Rent> rents = new ArrayList<>();
+    @OneToMany(mappedBy = "Customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Rent> rents = new ArrayList<>();
 
-    public Costumer() {
+    public Customer() {
 
     }
 
-    public Costumer(String first_name, String last_name, String genre, Integer age) {
+    public Customer(String first_name, String last_name, String genre, Integer age) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.genre = genre;
         this.age = age;
     }
 
-    public Costumer(String email, String first_name, String last_name, String genre, Integer age) {
+    public Customer(String email, String first_name, String last_name, String genre, Integer age) {
         this.email = email;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -91,9 +91,8 @@ public class Costumer {
         this.age = age;
     }
 
-    /*public void addRent(Rent rent) {
+    public void addRent(Rent rent) {
         rents.add(rent);
-        //Completar
-
-    }*/
+        rent.setEmail(this);
+    }
 }
