@@ -24,13 +24,14 @@ public class Edition {
     @Column(name = "release_year")
     private Date releaseYear;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "book_id")
     private Book book;
 
     // FetchType.EAGER: When we retrieve a Library, we'll also automatically retrieve all of its corresponding Editions
     // CascadeType.PERSIST: When we save a superhero, its movies will also be saved
     @ManyToMany(mappedBy = "editions", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    // REVISAR
     private Set<Library> libraries = new HashSet<>();
 
     public Edition() {}

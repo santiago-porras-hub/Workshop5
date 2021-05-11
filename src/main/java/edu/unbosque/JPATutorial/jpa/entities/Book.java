@@ -1,6 +1,8 @@
 package edu.unbosque.JPATutorial.jpa.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Book") // Optional
@@ -23,24 +25,34 @@ public class Book {
     @Column(name = "isbn_number")
     private String isbn;
 
+
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
 
-    @OneToOne(mappedBy = "book")
-    private Edition edition;
+    @Column(name = "genre")
+    private String genre;
 
-    public Book() {}
+    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Edition> editions = new ArrayList<>();
 
-    public Book(String title, String isbn) {
+
+    public Book() {
+    }
+
+    public Book(String title, String isbn, String genre) {
         this.title = title;
         this.isbn = isbn;
+        this.genre = genre;
+
     }
 
     public Book(Integer bookId, String title, String isbn) {
         this.bookId = bookId;
         this.title = title;
         this.isbn = isbn;
+
+
     }
 
     public Integer getBookId() {
@@ -75,11 +87,25 @@ public class Book {
         this.author = author;
     }
 
-    public Edition getEdition() { return edition; }
 
-    public void addEdition(Edition edition) {
-        this.edition = edition;
-        edition.setBook(this);
+    public String getGenre() {
+        return genre;
     }
 
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public List<Edition> getEdition() {
+        return editions;
+    }
+
+    public void setEdition(List<Edition> edition) {
+        this.editions = edition;
+    }
+
+    public void addEdition(Edition  edition) {
+        editions.add(edition);
+        edition.setBook(this);
+    }
 }

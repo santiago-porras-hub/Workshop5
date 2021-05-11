@@ -17,10 +17,11 @@ public class CreateBookServlet extends HttpServlet {
 
         String title = request.getParameter("title");
         String isbn = request.getParameter("isbn");
+        String genre = request.getParameter("genre");
         Integer authorId = Integer.parseInt(request.getParameter("authorId"));
 
         BookService bookService = new BookService();
-        bookService.saveBook(title, isbn, authorId);
+        bookService.saveBook(title, isbn, genre, authorId);
 
         response.sendRedirect("./index.jsp");
 
