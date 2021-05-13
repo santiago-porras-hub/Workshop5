@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "Customer") // Optional
+@Table(name = "customer") // Optional
 @NamedQueries({
         @NamedQuery(name = "Customer.findByEmail",
                 query = "SELECT a FROM Customer a WHERE a.email = :email")
@@ -13,7 +13,6 @@ import java.util.List;
 public class Customer {
 
     @Id
-    @GeneratedValue
     @Column(name = "email", unique = true)
     private String email;
 
@@ -29,7 +28,7 @@ public class Customer {
     @Column(name = "age")
     private Integer age;
 
-    @OneToMany(mappedBy = "Customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Rent> rents = new ArrayList<>();
 
     public Customer() {

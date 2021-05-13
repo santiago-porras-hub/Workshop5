@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 @Table(name = "Rent") // Optional
 @NamedQueries({
-        @NamedQuery(name = "Costumer.findByDate",
+        @NamedQuery(name = "Custumer.findByDate",
                 query = "SELECT a FROM Rent a WHERE a.rentingDate = :renting_date")
 })
 public class Rent {
@@ -19,11 +19,11 @@ public class Rent {
 
     @ManyToOne
     @JoinColumn(name = "email", nullable = false)
-    private Customer email;
+    private Customer customer;
 
     @ManyToOne
     @JoinColumn(name = "edition_id", nullable = false)
-    private Edition editionId;
+    private Edition edition;
 
     @Column(name = "renting_date", nullable = false)
     private String rentingDate;
@@ -32,16 +32,16 @@ public class Rent {
 
     }
 
-    public Rent(Customer email, Edition editionId, String rentingDate) {
-        this.email = email;
-        this.editionId = editionId;
+    public Rent(Customer customer, Edition edition, String rentingDate) {
+        this.customer = customer;
+        this.edition = edition;
         this.rentingDate = rentingDate;
     }
 
-    public Rent(Integer rentId, Customer email, Edition editionId, String rentingDate) {
+    public Rent(Integer rentId, Customer customer, Edition edition, String rentingDate) {
         this.rentId = rentId;
-        this.email = email;
-        this.editionId = editionId;
+        this.customer = customer;
+        this.edition = edition;
         this.rentingDate = rentingDate;
     }
 
@@ -54,19 +54,19 @@ public class Rent {
     }
 
     public Customer getEmail() {
-        return email;
+        return customer;
     }
 
     public void setEmail(Customer email) {
-        this.email = email;
+        this.customer = email;
     }
 
     public Edition getEditionId() {
-        return editionId;
+        return edition;
     }
 
-    public void setEditionId(Edition editionId) {
-        this.editionId = editionId;
+    public void setEditionId(Edition edition) {
+        this.edition = edition;
     }
 
     public String getRentingDate() {
