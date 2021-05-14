@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 @Table(name = "Rent") // Optional
 @NamedQueries({
-        @NamedQuery(name = "Custumer.findByDate",
+        @NamedQuery(name = "Rent.findByDate",
                 query = "SELECT a FROM Rent a WHERE a.rentingDate = :renting_date")
 })
 public class Rent {

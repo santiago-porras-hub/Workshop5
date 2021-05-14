@@ -25,7 +25,6 @@ public class Book {
     @Column(name = "isbn_number")
     private String isbn;
 
-
     @ManyToOne
     @JoinColumn(name = "author_id")
     private Author author;
