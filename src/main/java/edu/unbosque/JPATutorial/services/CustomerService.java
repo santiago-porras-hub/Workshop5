@@ -26,38 +26,36 @@ public class CustomerService {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         customerRepository = new CustomerRepositoryImpl(entityManager);
-            List<Customer> customers = customerRepository.findAll();
+        List<Customer> customers = customerRepository.findAll();
 
-             entityManager.close();
+        entityManager.close();
         entityManagerFactory.close();
 
-            List<CustomerPOJO> customerPOJO = new ArrayList<>();
-        for(
-            Customer customer :customers)
-
-            {
-                customerPOJO.add(new CustomerPOJO(
-                        customer.getEmail(), customer.getFirst_name() + " " + customer.getLast_name(),
-                        customer.getGenre(),
-                        customer.getAge()
-                ));
-            }
+        List<CustomerPOJO> customerPOJO = new ArrayList<>();
+        for (
+                Customer customer : customers) {
+            customerPOJO.add(new CustomerPOJO(
+                    customer.getEmail(), customer.getFirst_name() + " " + customer.getLast_name(),
+                    customer.getGenre(),
+                    customer.getAge()
+            ));
+        }
         return customerPOJO;
 
-        }
-
-        public Customer saveCustomer(String email, String first, String last, String genre, Integer age){
-
-            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
-            EntityManager entityManager = entityManagerFactory.createEntityManager();
-
-            customerRepository = new CustomerRepositoryImpl(entityManager);
-
-            Customer customer = new Customer(email,first,last,genre,age);
-            Customer persistedCustomer = customerRepository.save(customer).get();
-
-            entityManager.close();
-
-            return persistedCustomer;
-        }
     }
+
+    public Customer saveCustomer(String email, String first, String last, String genre, Integer age) {
+
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        customerRepository = new CustomerRepositoryImpl(entityManager);
+
+        Customer customer = new Customer(email, first, last, genre, age);
+        Customer persistedCustomer = customerRepository.save(customer).get();
+
+        entityManager.close();
+
+        return persistedCustomer;
+    }
+}

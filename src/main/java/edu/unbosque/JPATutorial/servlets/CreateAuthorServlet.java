@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "cretateAuthorServlet", value = "/create-author")
+@WebServlet(name = "createAuthorServlet", value = "/create-author")
 public class CreateAuthorServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
