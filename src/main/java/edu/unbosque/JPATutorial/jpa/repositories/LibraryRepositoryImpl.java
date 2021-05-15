@@ -33,4 +33,25 @@ public class LibraryRepositoryImpl implements LibraryRepository {
         return Optional.empty();
     }
 
+    @Override
+    public void deleteById(Integer id) {
+        Library library = entityManager.find(Library.class, id);
+        if (library != null) {
+            try {
+
+                entityManager.getTransaction().begin();
+
+                library.getEditions().forEach(edition -> {
+                    entityManager.remove(edition);
+                });
+
+                entityManager.remove(library);
+                entityManager.getTransaction().commit();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
 }

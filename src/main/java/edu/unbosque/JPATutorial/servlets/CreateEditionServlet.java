@@ -20,10 +20,11 @@ public class CreateEditionServlet {
 
         String description = request.getParameter("description");
         String releaseYear = request.getParameter("releaseyear");
-        Date releaseYearCast =new SimpleDateFormat("dd/MM/yyyy").parse(releaseYear);
+        Date releaseYearCast = new SimpleDateFormat("dd/MM/yyyy").parse(releaseYear);
+        Integer bookId = Integer.parseInt(request.getParameter("bookId"));
 
         EditionService editionService = new EditionService();
-        editionService.saveEdition(description,releaseYearCast);
+        editionService.saveEdition(description, releaseYearCast, bookId);
 
         response.sendRedirect("./index.jsp");
     }

@@ -13,4 +13,6 @@ public interface LibraryRepository {
 
     Optional<Library> save(Library library);
 
+    void deleteById(Integer id);
+
 }

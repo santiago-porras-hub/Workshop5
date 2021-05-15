@@ -86,6 +86,18 @@ public class Edition {
         return libraries;
     }
 
+    public void setLibraries(Set<Library> libraries) {
+        this.libraries = libraries;
+    }
+
+    public List<Rent> getRents() {
+        return rents;
+    }
+
+    public void setRents(List<Rent> rents) {
+        this.rents = rents;
+    }
+
     public void addLibrary(Library library) {
         libraries.add(library);
         library.getEditions().add(this);

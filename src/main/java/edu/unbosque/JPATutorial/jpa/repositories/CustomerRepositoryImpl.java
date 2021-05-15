@@ -1,6 +1,5 @@
 package edu.unbosque.JPATutorial.jpa.repositories;
 
-import edu.unbosque.JPATutorial.jpa.entities.Author;
 import edu.unbosque.JPATutorial.jpa.entities.Customer;
 
 import javax.persistence.EntityManager;
@@ -39,4 +38,26 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         return Optional.empty();
     }
 
+    @Override
+    public void deleteByEmail(String email) {
+        Customer customer = entityManager.find(Customer.class, email);
+        if (customer != null) {
+            try {
+
+                entityManager.getTransaction().begin();
+
+                customer.getRents().forEach(rent -> {
+                    entityManager.remove(rent);
+                });
+
+                entityManager.remove(customer);
+                entityManager.getTransaction().commit();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
+
+

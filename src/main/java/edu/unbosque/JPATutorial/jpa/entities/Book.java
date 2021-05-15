@@ -86,7 +86,6 @@ public class Book {
         this.author = author;
     }
 
-
     public String getGenre() {
         return genre;
     }
@@ -95,12 +94,12 @@ public class Book {
         this.genre = genre;
     }
 
-    public List<Edition> getEdition() {
+    public List<Edition> getEditions() {
         return editions;
     }
 
-    public void setEdition(List<Edition> edition) {
-        this.editions = edition;
+    public void setEditions(List<Edition> editions) {
+        this.editions = editions;
     }
 
     public void addEdition(Edition  edition) {

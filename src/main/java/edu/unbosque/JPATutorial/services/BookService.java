@@ -40,4 +40,17 @@ public class BookService {
 
     }
 
+    public void deleteBook(Integer bookId) {
+
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        bookRepository = new BookRepositoryImpl(entityManager);
+        bookRepository.deleteById(bookId);
+
+        entityManager.close();
+        entityManagerFactory.close();
+
+    }
+
 }

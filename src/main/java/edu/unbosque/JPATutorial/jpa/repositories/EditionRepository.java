@@ -13,4 +13,6 @@ public interface EditionRepository {
     List<Edition> findAll();
 
     Optional<Edition> save(Edition edition);
+
+    void deleteById(Integer id);
 }

@@ -90,6 +90,14 @@ public class Customer {
         this.age = age;
     }
 
+    public List<Rent> getRents() {
+        return rents;
+    }
+
+    public void setRents(List<Rent> rents) {
+        this.rents = rents;
+    }
+
     public void addRent(Rent rent) {
         rents.add(rent);
         rent.setEmail(this);

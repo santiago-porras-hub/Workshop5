@@ -57,4 +57,7 @@ public class Library {
         return editions;
     }
 
+    public void setEditions(Set<Edition> editions) {
+        this.editions = editions;
+    }
 }

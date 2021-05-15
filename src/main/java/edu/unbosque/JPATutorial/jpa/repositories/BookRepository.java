@@ -18,4 +18,6 @@ public interface BookRepository {
 
     Optional<Book> save(Book book);
 
+    void deleteById(Integer id);
+
 }
