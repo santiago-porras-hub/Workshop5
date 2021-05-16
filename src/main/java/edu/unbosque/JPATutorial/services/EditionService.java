@@ -3,10 +3,7 @@ package edu.unbosque.JPATutorial.services;
 import edu.unbosque.JPATutorial.jpa.entities.Author;
 import edu.unbosque.JPATutorial.jpa.entities.Book;
 import edu.unbosque.JPATutorial.jpa.entities.Edition;
-import edu.unbosque.JPATutorial.jpa.repositories.AuthorRepositoryImpl;
-import edu.unbosque.JPATutorial.jpa.repositories.BookRepository;
-import edu.unbosque.JPATutorial.jpa.repositories.EditionRepository;
-import edu.unbosque.JPATutorial.jpa.repositories.EditionRepositoryImpl;
+import edu.unbosque.JPATutorial.jpa.repositories.*;
 import edu.unbosque.JPATutorial.servlets.pojos.AuthorPOJO;
 import edu.unbosque.JPATutorial.servlets.pojos.EditionPOJO;
 
@@ -17,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+
 
 public class EditionService {
 
@@ -41,7 +39,6 @@ public class EditionService {
                     edition.getDescription(),
                     edition.getReleaseYear(),
                     edition.getBook().getBookId()
-
             ));
         }
 
@@ -49,12 +46,13 @@ public class EditionService {
 
     }
 
-    public Edition saveEdition(String description, Date releaseYear, Integer bookId) {
+    public Edition saveEdition(String description, String releaseYear, Integer bookId) {
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         editionRepository = new EditionRepositoryImpl(entityManager);
+        bookRepository = new BookRepositoryImpl(entityManager);
 
         Edition edition = new Edition(description,releaseYear);
         Edition persistedEdition = editionRepository.save(edition).get();

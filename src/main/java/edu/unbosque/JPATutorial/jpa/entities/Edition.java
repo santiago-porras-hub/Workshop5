@@ -20,7 +20,7 @@ public class Edition {
     private String description;
 
     @Column(name = "release_year")
-    private Date releaseYear;
+    private String releaseYear;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "book_id")
@@ -39,12 +39,12 @@ public class Edition {
 
     public Edition() {}
 
-    public Edition(String description, Date releaseYear) {
+    public Edition(String description, String releaseYear) {
         this.description = description;
         this.releaseYear = releaseYear;
     }
 
-    public Edition(Integer editionId, String description, Date releaseYear) {
+    public Edition(Integer editionId, String description, String releaseYear) {
         this.editionId = editionId;
         this.description = description;
         this.releaseYear = releaseYear;
@@ -66,11 +66,11 @@ public class Edition {
         this.description = description;
     }
 
-    public Date getReleaseYear() {
+    public String getReleaseYear() {
         return releaseYear;
     }
 
-    public void setReleaseYear(Date releaseYear) {
+    public void setReleaseYear(String releaseYear) {
         this.releaseYear = releaseYear;
     }
 

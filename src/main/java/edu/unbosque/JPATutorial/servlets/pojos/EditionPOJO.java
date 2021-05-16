@@ -9,14 +9,14 @@ public class EditionPOJO {
 
     private String description;
 
-    private Date releaseYear;
+    private String releaseYear;
 
     private Integer bookId;
 
     public EditionPOJO() {
     }
 
-    public EditionPOJO(Integer editionId, String description, Date releaseYear, Integer bookId) {
+    public EditionPOJO(Integer editionId, String description, String releaseYear, Integer bookId) {
         this.editionId = editionId;
         this.description = description;
         this.releaseYear = releaseYear;
@@ -39,11 +39,11 @@ public class EditionPOJO {
         this.description = description;
     }
 
-    public Date getReleaseYear() {
+    public String getReleaseYear() {
         return releaseYear;
     }
 
-    public void setReleaseYear(Date releaseYear) {
+    public void setReleaseYear(String releaseYear) {
         this.releaseYear = releaseYear;
     }
 

@@ -38,6 +38,7 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>Country</th>
                 <th># Books</th>
                 <th>Actions</th>
             </tr>
@@ -45,6 +46,37 @@
             <tbody>
             </tbody>
         </table>
+
+        <h3>Books</h3>
+        <table id="booksTbl">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Isbn</th>
+                <th>AuthorId</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <h3>Editions</h3>
+        <table id="editionsTbl">
+            <thead>
+            <tr>
+                <th>EditionId</th>
+                <th>Description</th>
+                <th>Release Year</th>
+                <th>BookId</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
 
         <script>
 
@@ -67,6 +99,24 @@
                                 cell.appendChild(text);
                             });
 
+                            if (actions.includes('delete-author')) {
+                                var cell = newRow.insertCell();
+                                var action = document.createElement('button');
+                                action.setAttribute('onclick', 'location.href="./delete-author?authorId=' + d['authorId'] + '";');
+                                var text = document.createTextNode('Delete author');
+                                action.appendChild(text);
+                                cell.appendChild(action);
+
+                            }
+                            if (actions.includes('delete-edition')) {
+                                var cell = newRow.insertCell();
+                                var action = document.createElement('button');
+                                action.setAttribute('onclick', 'location.href="./delete-edition?editionId=' + d['editionId'] + '";');
+                                var text = document.createTextNode('Delete edition');
+                                action.appendChild(text);
+                                cell.appendChild(action);
+                            }
+
                             if (actions.includes('create-book')) {
                                 var cell = newRow.insertCell();
                                 var action = document.createElement('button');
@@ -74,8 +124,18 @@
                                 var text = document.createTextNode('Create book');
                                 action.appendChild(text);
                                 cell.appendChild(action);
+                                printTable(elementId = 'booksTbl', servlet = 'list-books', columns = ['bookId', 'title','isbnId','authorId'],actions = ['create-edition','delete-book']);
                             }
 
+                            if(actions.includes('create-edition')){
+                                var cell = newRow.insertCell();
+                                var action = document.createElement('button');
+                                action.setAttribute('onclick', 'location.href="./form-edition.jsp?bookId=' + d['bookId'] + '";');
+                                var text = document.createTextNode('Create Edition');
+                                action.appendChild(text);
+                                cell.appendChild(action);
+                                printTable(elementId = 'editionsTbl', servlet = 'list-editions', columns = ['editionId', 'description','releaseyear','bookId'],actions = ['rent-edition','delete-edition']);
+                            }
                         });
 
                     }
@@ -89,7 +149,7 @@
             printTable(elementId = 'librariesTbl', servlet = 'list-libraries', columns = ['libraryId', 'name']);
 
             // Printing authors
-            printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name', 'numBooks'], actions = ['create-book']);
+            printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name','country', 'numBooks'], actions = ['create-book','delete-author']);
 
         </script>
 
