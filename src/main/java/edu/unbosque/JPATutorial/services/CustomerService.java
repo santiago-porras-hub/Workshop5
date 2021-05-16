@@ -35,7 +35,8 @@ public class CustomerService {
         for (
                 Customer customer : customers) {
             customerPOJO.add(new CustomerPOJO(
-                    customer.getEmail(), customer.getFirst_name() + " " + customer.getLast_name(),
+                    customer.getEmail(),
+                    customer.getFirst_name() + " " + customer.getLast_name(),
                     customer.getGenre(),
                     customer.getAge()
             ));
