@@ -47,16 +47,13 @@ public class RentService {
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-
         rentRepository = new RentRepositoryImpl(entityManager);
         customerRepository = new CustomerRepositoryImpl(entityManager);
-
         Optional<Customer> customer = customerRepository.findByEmail(email);
         customer.ifPresent(a -> {
             a.addRent(new Rent(rentingDate));
             customerRepository.save(a);
         });
-
         entityManager.close();
         entityManagerFactory.close();
         return;
