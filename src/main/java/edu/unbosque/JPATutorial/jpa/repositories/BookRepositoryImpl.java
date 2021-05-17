@@ -61,7 +61,7 @@ public class BookRepositoryImpl implements BookRepository {
 
                 entityManager.getTransaction().begin();
 
-                
+
                 book.getEditions().forEach(edition -> {
                     entityManager.remove(edition);
                 });
@@ -72,9 +72,6 @@ public class BookRepositoryImpl implements BookRepository {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else {
-            System.out.println("catreperro");
         }
-
     }
 }

@@ -1,21 +1,22 @@
 package edu.unbosque.JPATutorial.services;
 
-import edu.unbosque.JPATutorial.jpa.entities.Author;
+
 import edu.unbosque.JPATutorial.jpa.entities.Book;
 import edu.unbosque.JPATutorial.jpa.entities.Edition;
 import edu.unbosque.JPATutorial.jpa.repositories.*;
-import edu.unbosque.JPATutorial.servlets.pojos.AuthorPOJO;
+
 import edu.unbosque.JPATutorial.servlets.pojos.EditionPOJO;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 import java.util.Optional;
 
-
+@Stateless
 public class EditionService {
 
     EditionRepository editionRepository;
@@ -64,6 +65,7 @@ public class EditionService {
         });
 
         entityManager.close();
+        entityManagerFactory.close();
 
         return persistedEdition;
 

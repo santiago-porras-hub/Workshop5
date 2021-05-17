@@ -93,6 +93,19 @@
             </tbody>
         </table>
 
+        <h3>Rents</h3>
+        <table id="rentsTbl">
+            <thead>
+            <tr>
+                <th>RentId</th>
+                <th>Email</th>
+                <th>Renting Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
         <script>
 
             function printTable(elementId, servlet, columns, actions = []) {
@@ -124,6 +137,25 @@
 
 
                             }
+
+                            if (actions.includes('create-rent')) {
+                                var cell = newRow.insertCell();
+                                var action = document.createElement('button');
+                                action.setAttribute('onclick', 'location.href="./form-rent.jsp?email=' + d['email'] + '";');
+                                var text = document.createTextNode('Create rent');
+                                action.appendChild(text);
+                                cell.appendChild(action);
+
+
+                            }
+                           /* if(actions.includes('create-edition')){
+                                var cell = newRow.insertCell();
+                                var action = document.createElement('button');
+                                action.setAttribute('onclick', 'location.href="./form-edition.jsp?bookId=' + d['bookId'] + '";');
+                                var text = document.createTextNode('Create Edition');
+                                action.appendChild(text);
+                                cell.appendChild(action);
+                            }*/
                             if (actions.includes('delete-author')) {
                                 var cell = newRow.insertCell();
                                 var action = document.createElement('button');
@@ -151,6 +183,8 @@
                                 cell.appendChild(action);
                             }
 
+
+
                         });
 
                     }
@@ -159,7 +193,6 @@
                 xhr.send(null);
 
             }
-
 
             // Printing libraries
             printTable(elementId = 'librariesTbl', servlet = 'list-libraries', columns = ['libraryId', 'name'], actions =['delete-library']);
@@ -171,6 +204,9 @@
             // Printing Customers
             printTable(elementId = 'customersTbl', servlet = 'list-customers', columns = ['email', 'fullName','genre', 'age'], actions = ['create-rent','delete-customer']);
 
+            printTable(elementId = 'rentsTbl', servlet = 'list-rents', columns = ['rentId', 'email','rentingDate']);
+
+       /*     printTable(elementId = 'editionsTbl', servlet = 'list-editions', columns = ['editionId', 'description','releaseyear','bookId'],actions = ['rent-edition','delete-edition']);*/
 
         </script>
 

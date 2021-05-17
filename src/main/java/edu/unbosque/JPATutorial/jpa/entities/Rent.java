@@ -32,6 +32,15 @@ public class Rent {
 
     }
 
+    public Rent(Customer customer, String rentingDate) {
+        this.customer = customer;
+        this.rentingDate = rentingDate;
+    }
+
+    public Rent(String rentingDate) {
+        this.rentingDate = rentingDate;
+    }
+
     public Rent(Customer customer, Edition edition, String rentingDate) {
         this.customer = customer;
         this.edition = edition;
@@ -75,5 +84,21 @@ public class Rent {
 
     public void setRentingDate(String rentingDate) {
         this.rentingDate = rentingDate;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Edition getEdition() {
+        return edition;
+    }
+
+    public void setEdition(Edition edition) {
+        this.edition = edition;
     }
 }

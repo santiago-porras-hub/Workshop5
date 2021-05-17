@@ -102,4 +102,8 @@ public class Customer {
         rents.add(rent);
         rent.setEmail(this);
     }
+
+    public void deleteRent(Rent rent){
+        rents.remove(rent);
+    }
 }

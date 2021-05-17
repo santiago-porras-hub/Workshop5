@@ -5,6 +5,7 @@ import edu.unbosque.JPATutorial.jpa.entities.Book;
 import java.util.Date;
 
 public class EditionPOJO {
+
     private Integer editionId;
 
     private String description;
