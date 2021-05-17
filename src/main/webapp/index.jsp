@@ -93,7 +93,6 @@
             </tbody>
         </table>
 
-
         <script>
 
             function printTable(elementId, servlet, columns, actions = []) {
@@ -114,13 +113,15 @@
                                 var text = document.createTextNode(d[c]);
                                 cell.appendChild(text);
                             });
-                            if (actions.includes('delete-book')) {
+
+                            if (actions.includes('create-book')) {
                                 var cell = newRow.insertCell();
                                 var action = document.createElement('button');
-                                action.setAttribute('onclick', 'location.href="./delete-book?bookId=' + d['bookId'] + '";');
-                                var text = document.createTextNode('Delete Book');
+                                action.setAttribute('onclick', 'location.href="./form-book.jsp?authorId=' + d['authorId'] + '";');
+                                var text = document.createTextNode('Create book');
                                 action.appendChild(text);
                                 cell.appendChild(action);
+
 
                             }
                             if (actions.includes('delete-author')) {
@@ -130,7 +131,6 @@
                                 var text = document.createTextNode('Delete author');
                                 action.appendChild(text);
                                 cell.appendChild(action);
-
                             }
 
                             if (actions.includes('delete-customer')) {
@@ -140,38 +140,17 @@
                                 var text = document.createTextNode('Delete customer');
                                 action.appendChild(text);
                                 cell.appendChild(action);
-
                             }
 
-
-                           /* if (actions.includes('delete-edition')) {
+                            if (actions.includes('delete-book')) {
                                 var cell = newRow.insertCell();
                                 var action = document.createElement('button');
-                                action.setAttribute('onclick', 'location.href="./delete-edition?editionId=' + d['editionId'] + '";');
-                                var text = document.createTextNode('Delete edition');
+                                action.setAttribute('onclick', 'location.href="./delete-book?bookId=' + d['bookId'] + '";');
+                                var text = document.createTextNode('Delete Book');
                                 action.appendChild(text);
                                 cell.appendChild(action);
-                            }*/
-
-                            if (actions.includes('create-book')) {
-                                var cell = newRow.insertCell();
-                                var action = document.createElement('button');
-                                action.setAttribute('onclick', 'location.href="./form-book.jsp?authorId=' + d['authorId'] + '";');
-                                var text = document.createTextNode('Create book');
-                                action.appendChild(text);
-                                cell.appendChild(action);
-                                printTable(elementId = 'booksTbl', servlet = 'list-books', columns = ['bookId', 'title','isbnId','authorId'],actions = ['create-edition','delete-book']);
                             }
 
-                            /*if(actions.includes('create-edition')){
-                                var cell = newRow.insertCell();
-                                var action = document.createElement('button');
-                                action.setAttribute('onclick', 'location.href="./form-edition.jsp?bookId=' + d['bookId'] + '";');
-                                var text = document.createTextNode('Create Edition');
-                                action.appendChild(text);
-                                cell.appendChild(action);
-                                printTable(elementId = 'editionsTbl', servlet = 'list-editions', columns = ['editionId', 'description','releaseyear','bookId'],actions = ['rent-edition','delete-edition']);
-                            }*/
                         });
 
                     }
@@ -181,14 +160,17 @@
 
             }
 
+
             // Printing libraries
             printTable(elementId = 'librariesTbl', servlet = 'list-libraries', columns = ['libraryId', 'name'], actions =['delete-library']);
 
+            printTable(elementId = 'booksTbl', servlet = 'list-books', columns = ['bookId', 'title','isbnId','authorId'],actions = ['create-edition','delete-book']);
             // Printing authors
             printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name','country', 'numBooks'], actions = ['create-book','delete-author']);
 
             // Printing Customers
             printTable(elementId = 'customersTbl', servlet = 'list-customers', columns = ['email', 'fullName','genre', 'age'], actions = ['create-rent','delete-customer']);
+
 
         </script>
 
