@@ -66,6 +66,10 @@ public class Author {
         book.setAuthor(this);
     }
 
+    public void deleteBook(Book book){
+        books.remove(book);
+    }
+
     public String getCountry() {
         return country;
     }
