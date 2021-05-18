@@ -17,6 +17,17 @@ public class EditionPOJO {
     public EditionPOJO() {
     }
 
+    public EditionPOJO(String description, String releaseYear) {
+        this.description = description;
+        this.releaseYear = releaseYear;
+    }
+
+    public EditionPOJO(Integer editionId, String description, String releaseYear) {
+        this.editionId = editionId;
+        this.description = description;
+        this.releaseYear = releaseYear;
+    }
+
     public EditionPOJO(Integer editionId, String description, String releaseYear, Integer bookId) {
         this.editionId = editionId;
         this.description = description;

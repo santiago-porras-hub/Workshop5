@@ -37,7 +37,6 @@ public class RentService {
         for (Rent rent : rents) {
             rentsPOJO.add(new RentPOJO(
                     rent.getRentId(),
-                    rent.getCustomer().getEmail(),
                     rent.getRentingDate()
             ));
         }

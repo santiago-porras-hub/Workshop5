@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-@WebServlet(name = "listEditionServlet", value = "/list-editions ")
+@WebServlet(name = "listEditionServlet", value = "/list-editions")
 public class ListEditionsServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -24,7 +24,7 @@ public class ListEditionsServlet extends HttpServlet {
 
         EditionService editionService = new EditionService();
         List<EditionPOJO> editions =  editionService.listEditions();
-        System.out.println(editions.get(0).getBookId());
+
         String editionsJsonString = new Gson().toJson(editions);
 
         PrintWriter out = response.getWriter();

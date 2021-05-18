@@ -37,10 +37,11 @@ public class EditionService {
         List<EditionPOJO> editionsPOJO = new ArrayList<>();
         for (Edition edition : editions) {
             editionsPOJO.add(new EditionPOJO(
+
                     edition.getEditionId(),
                     edition.getDescription(),
-                    edition.getReleaseYear(),
-                    edition.getBook().getBookId()
+                    edition.getReleaseYear()
+
             ));
         }
 
@@ -90,7 +91,7 @@ public class EditionService {
 
         editionRepository = new EditionRepositoryImpl(entityManager);
 
-        Edition edition = new Edition(description,releaseYear);
+        Edition edition = new Edition(description, releaseYear);
         Edition persistedEdition = editionRepository.save(edition).get();
 
         entityManager.close();

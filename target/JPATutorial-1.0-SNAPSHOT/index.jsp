@@ -85,7 +85,6 @@
                 <th>EditionId</th>
                 <th>Description</th>
                 <th>Release Year</th>
-                <th>BookId</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -191,6 +190,14 @@
                                 action.appendChild(text);
                                 cell.appendChild(action);
                             }
+                            if (actions.includes('delete-edition')) {
+                                var cell = newRow.insertCell();
+                                var action = document.createElement('button');
+                                action.setAttribute('onclick', 'location.href="./delete-edition?editionId=' + d['editionId'] + '";');
+                                var text = document.createTextNode('Delete edition');
+                                action.appendChild(text);
+                                cell.appendChild(action);
+                            }
 
                             if (actions.includes('update-author')) {
                                 var cell = newRow.insertCell();
@@ -246,13 +253,13 @@
             printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name','country', 'numBooks'], actions = ['create-book','delete-author','update-author']);
 
             // Printing Customers
-            printTable(elementId = 'customersTbl', servlet = 'list-customers', columns = ['email', 'fullName','genre', 'age'], actions = ['create-rent','delete-customer','update-customer']);
+            printTable(elementId = 'customersTbl', servlet = 'list-customers', columns = ['email', 'fullName','genre', 'age'], actions = ['delete-customer','update-customer']);
 
             //Printing Rents
             printTable(elementId = 'rentsTbl', servlet = 'list-rents', columns = ['rentId', 'email','rentingDate']);
 
             //Printing Editions
-           printTable(elementId = 'editionsTbl', servlet = 'list-editions', columns = ['editionId', 'description','releaseyear','bookId'],actions = ['rent-edition','delete-edition']);
+           printTable(elementId = 'editionsTbl', servlet = 'list-editions', columns = ['editionId', 'description','releaseYear'],actions = ['rent-edition','delete-edition']);
 
         </script>
 

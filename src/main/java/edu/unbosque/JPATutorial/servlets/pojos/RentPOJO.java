@@ -18,6 +18,11 @@ public class RentPOJO {
         this.rentingDate = rentingDate;
     }
 
+    public RentPOJO(Integer rentId, String rentingDate) {
+        this.rentId = rentId;
+        this.rentingDate = rentingDate;
+    }
+
     public Integer getRentId() {
         return rentId;
     }

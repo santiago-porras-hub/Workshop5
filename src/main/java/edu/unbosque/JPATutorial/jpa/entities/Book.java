@@ -106,4 +106,7 @@ public class Book {
         editions.add(edition);
         edition.setBook(this);
     }
+    public void deleteEdition(Edition edition) {
+        editions.remove(edition);
+    }
 }

@@ -26,7 +26,6 @@ public class ListRentsServlet extends HttpServlet {
         RentService rentService = new RentService();
         List<RentPOJO> rents =  rentService.listRents();
 
-        System.out.println(rents.get(0).getRentingDate());
         String rentsJsonString = new Gson().toJson(rents);
         PrintWriter out = response.getWriter();
         out.print(rentsJsonString);

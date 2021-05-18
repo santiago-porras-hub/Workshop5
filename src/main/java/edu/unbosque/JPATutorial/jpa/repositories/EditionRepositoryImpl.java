@@ -47,14 +47,15 @@ public class EditionRepositoryImpl implements EditionRepository {
         if (edition != null) {
             try {
 
+
+                Book book = edition.getBook();
+                book.deleteEdition(edition);
+
+
                 entityManager.getTransaction().begin();
 
                 edition.getRents().forEach(rent -> {
                     entityManager.remove(rent);
-                });
-
-                edition.getLibraries().forEach(library -> {
-                    entityManager.remove(library);
                 });
 
                 entityManager.remove(edition);
