@@ -74,4 +74,26 @@ public class BookRepositoryImpl implements BookRepository {
             }
         }
     }
+
+    @Override
+    public void updateById(Integer id, String title, String isbn, String genre) {
+
+        Book book = entityManager.find(Book.class, id);
+        if (book != null) {
+            try {
+                entityManager.getTransaction().begin();
+                book.setTitle(title);
+                book.setIsbn(isbn);
+                book.setGenre(genre);
+                Author author = book.getAuthor();
+                author.UpdateBook(book);
+                entityManager.merge(book);
+                entityManager.getTransaction().commit();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 }

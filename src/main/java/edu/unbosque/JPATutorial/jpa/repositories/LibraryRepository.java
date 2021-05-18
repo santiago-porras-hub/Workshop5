@@ -15,4 +15,6 @@ public interface LibraryRepository {
 
     void deleteById(Integer id);
 
+    void updateById(Integer id,String name);
+
 }

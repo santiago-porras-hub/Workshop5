@@ -183,7 +183,50 @@
                                 cell.appendChild(action);
                             }
 
+                            if (actions.includes('delete-library')) {
+                                var cell = newRow.insertCell();
+                                var action = document.createElement('button');
+                                action.setAttribute('onclick', 'location.href="./delete-library?libraryId=' + d['libraryId'] + '";');
+                                var text = document.createTextNode('Delete Library');
+                                action.appendChild(text);
+                                cell.appendChild(action);
+                            }
 
+                            if (actions.includes('update-author')) {
+                                var cell = newRow.insertCell();
+                                var action = document.createElement('button');
+                                action.setAttribute('onclick', 'location.href="./form-authorUP.jsp?authorId=' + d['authorId'] + '";');
+                                var text = document.createTextNode('Update Author');
+                                action.appendChild(text);
+                                cell.appendChild(action);
+                            }
+
+                            if (actions.includes('update-customer')) {
+                                var cell = newRow.insertCell();
+                                var action = document.createElement('button');
+                                action.setAttribute('onclick', 'location.href="./form-customerUP.jsp?email=' + d['email'] + '";');
+                                var text = document.createTextNode('Update Customer');
+                                action.appendChild(text);
+                                cell.appendChild(action);
+                            }
+
+                            if (actions.includes('update-book')) {
+                                var cell = newRow.insertCell();
+                                var action = document.createElement('button');
+                                action.setAttribute('onclick', 'location.href="./form-bookUP.jsp?bookId=' + d['bookId'] + '";');
+                                var text = document.createTextNode('Update Book');
+                                action.appendChild(text);
+                                cell.appendChild(action);
+                            }
+
+                            if (actions.includes('update-library')) {
+                                var cell = newRow.insertCell();
+                                var action = document.createElement('button');
+                                action.setAttribute('onclick', 'location.href="./form-libraryUP.jsp?libraryId=' + d['libraryId'] + '";');
+                                var text = document.createTextNode('Update Library');
+                                action.appendChild(text);
+                                cell.appendChild(action);
+                            }
 
                         });
 
@@ -195,17 +238,20 @@
             }
 
             // Printing libraries
-            printTable(elementId = 'librariesTbl', servlet = 'list-libraries', columns = ['libraryId', 'name'], actions =['delete-library']);
+            printTable(elementId = 'librariesTbl', servlet = 'list-libraries', columns = ['libraryId', 'name'], actions =['delete-library','update-library']);
 
-            printTable(elementId = 'booksTbl', servlet = 'list-books', columns = ['bookId', 'title','isbnId','authorId'],actions = ['create-edition','delete-book']);
+            //Printing Books
+            printTable(elementId = 'booksTbl', servlet = 'list-books', columns = ['bookId', 'title','isbnId','authorId'],actions = ['create-edition','delete-book','update-book']);
             // Printing authors
-            printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name','country', 'numBooks'], actions = ['create-book','delete-author']);
+            printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name','country', 'numBooks'], actions = ['create-book','delete-author','update-author']);
 
             // Printing Customers
-            printTable(elementId = 'customersTbl', servlet = 'list-customers', columns = ['email', 'fullName','genre', 'age'], actions = ['create-rent','delete-customer']);
+            printTable(elementId = 'customersTbl', servlet = 'list-customers', columns = ['email', 'fullName','genre', 'age'], actions = ['create-rent','delete-customer','update-customer']);
 
+            //Printing Rents
             printTable(elementId = 'rentsTbl', servlet = 'list-rents', columns = ['rentId', 'email','rentingDate']);
 
+            //Printing Editions
        /*     printTable(elementId = 'editionsTbl', servlet = 'list-editions', columns = ['editionId', 'description','releaseyear','bookId'],actions = ['rent-edition','delete-edition']);*/
 
         </script>

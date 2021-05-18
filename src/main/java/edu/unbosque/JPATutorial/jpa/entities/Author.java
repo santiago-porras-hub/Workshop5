@@ -28,17 +28,18 @@ public class Author {
     @OneToMany(mappedBy = "author", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Book> books = new ArrayList<>();
 
-    public Author() {}
-
-    public Author(String name,String country) {
-        this.name = name;
-        this.country=country;
+    public Author() {
     }
 
-    public Author(Integer authorId, String name,String country) {
+    public Author(String name, String country) {
+        this.name = name;
+        this.country = country;
+    }
+
+    public Author(Integer authorId, String name, String country) {
         this.authorId = authorId;
         this.name = name;
-        this.country= country;
+        this.country = country;
     }
 
     public Integer getAuthorId() {
@@ -66,8 +67,24 @@ public class Author {
         book.setAuthor(this);
     }
 
-    public void deleteBook(Book book){
+    public void deleteBook(Book book) {
         books.remove(book);
+    }
+
+    public void UpdateBook(Book book) {
+
+        int id = book.getBookId();
+
+        books.remove(book);
+
+        boolean founded = true;
+        for (int i = 0; i < books.size() && founded; i++) {
+            if (id == books.get(i).getBookId()) {
+                books.remove(books.get(i));
+                books.add(book);
+                founded = false;
+            }
+        }
     }
 
     public String getCountry() {

@@ -83,5 +83,18 @@ public class BookService {
 
     }
 
+    public void modifyBook(Integer id, String title, String isbn, String genre){
+
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        bookRepository = new BookRepositoryImpl(entityManager);
+        bookRepository.updateById(id,title,isbn,genre);
+
+        entityManager.close();
+        entityManagerFactory.close();
+
+    }
+
 }
 

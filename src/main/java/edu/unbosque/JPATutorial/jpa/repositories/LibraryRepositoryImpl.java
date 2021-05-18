@@ -54,4 +54,21 @@ public class LibraryRepositoryImpl implements LibraryRepository {
         }
 
     }
+
+    @Override
+    public void updateById(Integer id, String name) {
+
+        Library library = entityManager.find(Library.class, id);
+        if (library != null) {
+            try {
+                entityManager.getTransaction().begin();
+                library.setName(name);
+                entityManager.merge(library);
+                entityManager.getTransaction().commit();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
+

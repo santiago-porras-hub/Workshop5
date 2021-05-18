@@ -14,4 +14,6 @@ public interface CustomerRepository {
     Optional<Customer> save(Customer customer);
 
     void deleteByEmail(String email);
+
+    void updateByEmail(String email, String first_name, String last_name,String genre, Integer age);
 }

@@ -20,4 +20,5 @@ public interface BookRepository {
 
     void deleteById(Integer id);
 
+    void updateById(Integer id,String title, String isbn, String genre);
 }
