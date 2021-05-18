@@ -53,6 +53,7 @@ public class RentService {
         customer.ifPresent(a -> {
             a.addRent(new Rent(rentingDate));
             customerRepository.save(a);
+            
         });
         entityManager.close();
         entityManagerFactory.close();

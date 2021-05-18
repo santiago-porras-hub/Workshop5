@@ -15,7 +15,6 @@
 <form action="./create-rent">
     <input type="hidden" id="email" name="email" value ="<%= request.getParameter("email") %>">
     Renting Date: <input type="text" id="rentingDate" name="rentingDate">
-
     <input type="submit" value="Create rent!">
 </form>
 
