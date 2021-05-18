@@ -1,6 +1,7 @@
 package edu.unbosque.JPATutorial.services;
 
 
+import edu.unbosque.JPATutorial.jpa.entities.Author;
 import edu.unbosque.JPATutorial.jpa.entities.Book;
 import edu.unbosque.JPATutorial.jpa.entities.Edition;
 import edu.unbosque.JPATutorial.jpa.repositories.*;
@@ -47,7 +48,7 @@ public class EditionService {
 
     }
 
-    public Edition saveEdition(String description, String releaseYear, Integer bookId) {
+    public void saveEdition(String description, String releaseYear, Integer bookId) {
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -55,8 +56,6 @@ public class EditionService {
         editionRepository = new EditionRepositoryImpl(entityManager);
         bookRepository = new BookRepositoryImpl(entityManager);
 
-        Edition edition = new Edition(description,releaseYear);
-        Edition persistedEdition = editionRepository.save(edition).get();
 
         Optional<Book> book = bookRepository.findById(bookId);
         book.ifPresent(a -> {
@@ -67,8 +66,7 @@ public class EditionService {
         entityManager.close();
         entityManagerFactory.close();
 
-        //borrar
-        return persistedEdition;
+        return;
 
     }
 
@@ -82,6 +80,23 @@ public class EditionService {
 
         entityManager.close();
         entityManagerFactory.close();
+
+    }
+
+    public Edition saveFirstEdition(String description, String releaseYear) {
+
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        editionRepository = new EditionRepositoryImpl(entityManager);
+
+        Edition edition = new Edition(description,releaseYear);
+        Edition persistedEdition = editionRepository.save(edition).get();
+
+        entityManager.close();
+        entityManagerFactory.close();
+
+        return persistedEdition;
 
     }
 }

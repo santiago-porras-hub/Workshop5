@@ -1,6 +1,7 @@
 package edu.unbosque.JPATutorial.servlets;
 
 import edu.unbosque.JPATutorial.services.BookService;
+import edu.unbosque.JPATutorial.services.EditionService;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +21,13 @@ public class CreateBookServlet extends HttpServlet {
         String genre = request.getParameter("genre");
         Integer authorId = Integer.parseInt(request.getParameter("authorId"));
 
+        String description = request.getParameter("description");
+        String releaseyear = request.getParameter("releaseyear");
+
         BookService bookService = new BookService();
+        EditionService editionService = new EditionService();
         bookService.saveBook(title, isbn, genre, authorId);
+        editionService.saveFirstEdition(description,releaseyear);
 
         response.sendRedirect("./index.jsp");
 

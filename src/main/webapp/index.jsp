@@ -252,7 +252,7 @@
             printTable(elementId = 'rentsTbl', servlet = 'list-rents', columns = ['rentId', 'email','rentingDate']);
 
             //Printing Editions
-       /*     printTable(elementId = 'editionsTbl', servlet = 'list-editions', columns = ['editionId', 'description','releaseyear','bookId'],actions = ['rent-edition','delete-edition']);*/
+           printTable(elementId = 'editionsTbl', servlet = 'list-editions', columns = ['editionId', 'description','releaseyear','bookId'],actions = ['rent-edition','delete-edition']);
 
         </script>
 
