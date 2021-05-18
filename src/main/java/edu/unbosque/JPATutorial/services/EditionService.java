@@ -67,6 +67,7 @@ public class EditionService {
         entityManager.close();
         entityManagerFactory.close();
 
+        //borrar
         return persistedEdition;
 
     }

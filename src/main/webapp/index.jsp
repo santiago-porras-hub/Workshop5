@@ -148,14 +148,14 @@
 
 
                             }
-                           /* if(actions.includes('create-edition')){
+                            if(actions.includes('create-edition')){
                                 var cell = newRow.insertCell();
                                 var action = document.createElement('button');
                                 action.setAttribute('onclick', 'location.href="./form-edition.jsp?bookId=' + d['bookId'] + '";');
                                 var text = document.createTextNode('Create Edition');
                                 action.appendChild(text);
                                 cell.appendChild(action);
-                            }*/
+                            }
                             if (actions.includes('delete-author')) {
                                 var cell = newRow.insertCell();
                                 var action = document.createElement('button');
