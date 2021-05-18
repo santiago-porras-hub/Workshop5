@@ -1,11 +1,7 @@
 package edu.unbosque.JPATutorial.services;
 
-import edu.unbosque.JPATutorial.jpa.entities.Author;
-import edu.unbosque.JPATutorial.jpa.entities.Book;
-import edu.unbosque.JPATutorial.jpa.entities.Customer;
-import edu.unbosque.JPATutorial.jpa.entities.Rent;
+import edu.unbosque.JPATutorial.jpa.entities.*;
 import edu.unbosque.JPATutorial.jpa.repositories.*;
-import edu.unbosque.JPATutorial.servlets.pojos.BookPOJO;
 import edu.unbosque.JPATutorial.servlets.pojos.RentPOJO;
 
 import javax.ejb.Stateless;
@@ -19,7 +15,7 @@ import java.util.Optional;
 @Stateless
 public class RentService {
 
-    CustomerRepository customerRepository;
+    EditionRepository editionRepository;
     RentRepository rentRepository;
 
     public List<RentPOJO> listRents() {
@@ -42,16 +38,16 @@ public class RentService {
         }
         return rentsPOJO;
     }
-    public void saveRent(String email, String rentingDate) {
+    public void saveRent(Integer id, String rentingDate) {
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         rentRepository = new RentRepositoryImpl(entityManager);
-        customerRepository = new CustomerRepositoryImpl(entityManager);
-        Optional<Customer> customer = customerRepository.findByEmail(email);
-        customer.ifPresent(a -> {
+        EditionRepository editionRepository= new EditionRepositoryImpl(entityManager);
+        Optional<Edition> edition = editionRepository.findById(id);
+        edition.ifPresent(a -> {
             a.addRent(new Rent(rentingDate));
-            customerRepository.save(a);
+            editionRepository.save(a);
 
         });
         entityManager.close();

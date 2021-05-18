@@ -18,11 +18,11 @@ public class CreateRentServlet extends HttpServlet {
 
         response.setContentType("text/html");
 
-        String email = request.getParameter("email");
+        Integer editionId = Integer.parseInt(request.getParameter("editionId"));
         String rentingDate = request.getParameter("rentingDate");
 
         RentService rentService = new RentService();
-        rentService.saveRent(email,rentingDate);
+        rentService.saveRent(editionId,rentingDate);
         response.sendRedirect("./index.jsp");
 
     }

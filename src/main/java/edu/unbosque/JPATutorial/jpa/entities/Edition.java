@@ -107,5 +107,8 @@ public class Edition {
         rents.add(rent);
         rent.setEditionId(this);
     }
+    public void deleteRent(Rent rent){
+        rents.remove(rent);
+    }
 
 }

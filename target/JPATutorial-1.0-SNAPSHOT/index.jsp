@@ -137,10 +137,10 @@
 
                             }
 
-                            if (actions.includes('create-rent')) {
+                            if (actions.includes('rent-edition')) {
                                 var cell = newRow.insertCell();
                                 var action = document.createElement('button');
-                                action.setAttribute('onclick', 'location.href="./form-rent.jsp?email=' + d['email'] + '";');
+                                action.setAttribute('onclick', 'location.href="./form-rent.jsp?editionId=' + d['editionId'] + '";');
                                 var text = document.createTextNode('Create rent');
                                 action.appendChild(text);
                                 cell.appendChild(action);
