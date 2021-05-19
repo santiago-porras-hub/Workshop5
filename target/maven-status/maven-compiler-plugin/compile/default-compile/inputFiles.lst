@@ -41,6 +41,7 @@ C:\Users\santi\Workshop5\src\main\java\edu\unbosque\JPATutorial\jpa\repositories
 C:\Users\santi\Workshop5\src\main\java\edu\unbosque\JPATutorial\servlets\CreateLibraryServlet.java
 C:\Users\santi\Workshop5\src\main\java\edu\unbosque\JPATutorial\servlets\DeleteCustomerServlet.java
 C:\Users\santi\Workshop5\src\main\java\edu\unbosque\JPATutorial\servlets\ListBooksServlet.java
+C:\Users\santi\Workshop5\src\main\java\edu\unbosque\JPATutorial\servlets\UpdateEditionServlet.java
 C:\Users\santi\Workshop5\src\main\java\edu\unbosque\JPATutorial\servlets\DeleteBookServlet.java
 C:\Users\santi\Workshop5\src\main\java\edu\unbosque\JPATutorial\servlets\pojos\EditionPOJO.java
 C:\Users\santi\Workshop5\src\main\java\edu\unbosque\JPATutorial\services\CustomerService.java
