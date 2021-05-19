@@ -68,5 +68,25 @@ public class EditionRepositoryImpl implements EditionRepository {
 
     }
 
+    @Override
+    public void updateById(Integer id, String description, String releaseYear) {
+
+        Edition edition = entityManager.find(Edition.class, id);
+        if (edition != null) {
+            try {
+                entityManager.getTransaction().begin();
+                edition.setDescription(description);
+                edition.setReleaseYear(releaseYear);
+
+                entityManager.merge(edition);
+                entityManager.getTransaction().commit();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+
+    }
+
 
 }

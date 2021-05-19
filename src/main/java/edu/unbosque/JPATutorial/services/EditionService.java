@@ -100,4 +100,17 @@ public class EditionService {
         return persistedEdition;
 
     }
+
+    public void modifyEdition(Integer id, String description, String releaseYear) {
+
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        editionRepository = new EditionRepositoryImpl(entityManager);
+        editionRepository.updateById(id, description, releaseYear);
+
+        entityManager.close();
+        entityManagerFactory.close();
+
+    }
 }

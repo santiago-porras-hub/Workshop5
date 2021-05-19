@@ -235,6 +235,15 @@
                                 cell.appendChild(action);
                             }
 
+                            if (actions.includes('update-edition')) {
+                                var cell = newRow.insertCell();
+                                var action = document.createElement('button');
+                                action.setAttribute('onclick', 'location.href="./form-editionUP.jsp?editionId=' + d['editionId'] + '";');
+                                var text = document.createTextNode('Update Edition');
+                                action.appendChild(text);
+                                cell.appendChild(action);
+                            }
+
                         });
 
                     }
@@ -259,7 +268,7 @@
             printTable(elementId = 'rentsTbl', servlet = 'list-rents', columns = ['rentId', 'email','rentingDate']);
 
             //Printing Editions
-           printTable(elementId = 'editionsTbl', servlet = 'list-editions', columns = ['editionId', 'description','releaseYear'],actions = ['rent-edition','delete-edition']);
+           printTable(elementId = 'editionsTbl', servlet = 'list-editions', columns = ['editionId', 'description','releaseYear'],actions = ['rent-edition','delete-edition','update-edition']);
 
         </script>
 

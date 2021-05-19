@@ -109,4 +109,20 @@ public class Book {
     public void deleteEdition(Edition edition) {
         editions.remove(edition);
     }
+
+    public void UpdateEdition(Edition edition) {
+
+        int id = edition.getEditionId();
+
+        editions.remove(edition);
+
+        boolean founded = true;
+        for (int i = 0; i < editions.size() && founded; i++) {
+            if (id == editions.get(i).getEditionId()) {
+                editions.remove(editions.get(i));
+                editions.add(edition);
+                founded = false;
+            }
+        }
+    }
 }
