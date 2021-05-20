@@ -1,4 +1,4 @@
-# JPATutorial
+# Workshop5
 
 Stack:
  - Wildfly 23.0.1.Final
