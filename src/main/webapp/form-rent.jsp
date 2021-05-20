@@ -13,8 +13,12 @@
 <body>
 
 <form action="./create-rent">
-    <input type="hidden" id="editionId" name="editionId" value ="<%= request.getParameter("editionId") %>">
     Renting Date: <input type="text" id="rentingDate" name="rentingDate">
+    <br/>
+    Edition Id to ren<input type="text" id="editionId" name="editionId">
+    <br/>
+    Email Customer´s rent: <input type="text" id="email" name="email">
+    <br/>
     <input type="submit" value="Create rent!">
 </form>
 

@@ -17,6 +17,7 @@ public class RentService {
 
     EditionRepository editionRepository;
     RentRepository rentRepository;
+    CustomerRepository customerRepository;
 
     public List<RentPOJO> listRents() {
 
@@ -38,16 +39,27 @@ public class RentService {
         }
         return rentsPOJO;
     }
-    public void saveRent(Integer id, String rentingDate) {
+
+    public void saveRent(Integer id, String rentingDate, String email) {
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("tutorial");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
+
         rentRepository = new RentRepositoryImpl(entityManager);
-        EditionRepository editionRepository= new EditionRepositoryImpl(entityManager);
+        editionRepository = new EditionRepositoryImpl(entityManager);
+        customerRepository = new CustomerRepositoryImpl(entityManager);
+
         Optional<Edition> edition = editionRepository.findById(id);
         edition.ifPresent(a -> {
             a.addRent(new Rent(rentingDate));
             editionRepository.save(a);
+
+        });
+
+        Optional<Customer> customer = customerRepository.findByEmail(email);
+        customer.ifPresent(a -> {
+            a.addRent(new Rent(rentingDate));
+            customerRepository.save(a);
 
         });
         entityManager.close();

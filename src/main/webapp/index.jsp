@@ -22,6 +22,7 @@
         <button class="btn btn-primary" onclick="location.href='./form-library.jsp';">Create Library</button>
         <button class="btn btn-primary" onclick="location.href='./form-author.jsp';">Create Author</button>
         <button class="btn btn-primary" onclick="location.href='./form-customer.jsp';">Create Customer</button>
+        <button class="btn btn-primary" onclick="location.href='./form-rent.jsp';">Create Rent</button>
     </div>
 </div>
 
@@ -110,20 +111,20 @@
 
 <div class="container">
     <div class="row col-md-6 col-md-offset-2 custyle">
-<h3>Editions</h3>
-<table id="editionsTbl" class="table table-bordered table-sm m-0">
-    <thead>
-    <tr>
-        <th style="background-color: lightgrey">EditionId</th>
-        <th style="background-color: lightgrey">Description</th>
-        <th style="background-color: lightgrey">Release Year</th>
-        <th style="background-color: lightgrey">Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    </tbody>
-</table>
-</div>
+        <h3>Editions</h3>
+        <table id="editionsTbl" class="table table-bordered table-sm m-0">
+            <thead>
+            <tr>
+                <th style="background-color: lightgrey">EditionId</th>
+                <th style="background-color: lightgrey">Description</th>
+                <th style="background-color: lightgrey">Release Year</th>
+                <th style="background-color: lightgrey">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 
@@ -134,7 +135,6 @@
             <thead>
             <tr>
                 <th style="background-color: lightgrey">RentId</th>
-                <th style="background-color: lightgrey">Email</th>
                 <th style="background-color: lightgrey">Renting Date</th>
             </tr>
             </thead>
@@ -173,18 +173,8 @@
                         var text = document.createTextNode('Create book')
                         action.appendChild(text);
                         cell.appendChild(action);
-
-
                     }
 
-                    if (actions.includes('rent-edition')) {
-                        var cell = newRow.insertCell();
-                        var action = document.createElement('button');
-                        action.setAttribute('onclick', 'location.href="./form-rent.jsp?editionId=' + d['editionId'] + '";');
-                        var text = document.createTextNode('Create rent');
-                        action.appendChild(text);
-                        cell.appendChild(action);
-                    }
                     if (actions.includes('create-edition')) {
                         var cell = newRow.insertCell();
                         var action = document.createElement('button');
@@ -296,18 +286,18 @@
 
     //Printing Books
     printTable(elementId = 'booksTbl', servlet = 'list-books', columns = ['bookId', 'title', 'isbnId', 'authorId'], actions = ['create-edition', 'delete-book', 'update-book']);
+
     // Printing authors
     printTable(elementId = 'authorsTbl', servlet = 'list-authors', columns = ['authorId', 'name', 'country', 'numBooks'], actions = ['create-book', 'delete-author', 'update-author']);
 
     // Printing Customers
     printTable(elementId = 'customersTbl', servlet = 'list-customers', columns = ['email', 'fullName', 'genre', 'age'], actions = ['delete-customer', 'update-customer']);
 
+    //Printing Editions
+    printTable(elementId = 'editionsTbl', servlet = 'list-editions', columns = ['editionId', 'description', 'releaseYear'], actions = ['delete-edition', 'update-edition']);
+
     //Printing Rents
     printTable(elementId = 'rentsTbl', servlet = 'list-rents', columns = ['rentId', 'email', 'rentingDate']);
-
-    //Printing Editions
-    printTable(elementId = 'editionsTbl', servlet = 'list-editions', columns = ['editionId', 'description', 'releaseYear'], actions = ['rent-edition', 'delete-edition', 'update-edition']);
-
 </script>
 
 </body>

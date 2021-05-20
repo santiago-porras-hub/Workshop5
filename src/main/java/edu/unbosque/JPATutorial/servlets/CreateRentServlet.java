@@ -1,7 +1,5 @@
 package edu.unbosque.JPATutorial.servlets;
 
-
-import edu.unbosque.JPATutorial.services.BookService;
 import edu.unbosque.JPATutorial.services.RentService;
 
 import javax.servlet.annotation.WebServlet;
@@ -20,9 +18,9 @@ public class CreateRentServlet extends HttpServlet {
 
         Integer editionId = Integer.parseInt(request.getParameter("editionId"));
         String rentingDate = request.getParameter("rentingDate");
-
+        String email = request.getParameter("email");
         RentService rentService = new RentService();
-        rentService.saveRent(editionId,rentingDate);
+        rentService.saveRent(editionId, rentingDate, email);
         response.sendRedirect("./index.jsp");
 
     }
